@@ -16,3 +16,28 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('articles', function(){
+    $articles = ['Article B', 'Article A', 'Article C'];
+
+    $sort = request()->query('sort');
+    dd($sort);
+
+    foreach($articles as $article){
+        echo '<p>'.$article.'</p>';
+    }
+});
+
+Route::get('test/{username}', function($username){
+    echo'Bonjour ' .$username;
+});
+
+Route::get('profile/{name?}', function($name = null){
+    if($name){
+        echo 'Bonjour ' .$name;
+    }
+    else{
+        echo 'Bonjour inconnu.';
+    }
+});
