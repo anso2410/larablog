@@ -21,8 +21,22 @@ Route::get('/', function () {
 Route::get('articles', function(){
     $articles = ['Article B', 'Article A', 'Article C'];
 
-    $sort = request()->query('sort');
-    dd($sort);
+    $sort = request()->query('sort', null);
+
+    switch ($sort) {
+        case 'desc':
+           rsort($articles);
+            break;
+        
+         case 'asc':
+            sort($articles);   
+        
+        
+        default:
+           sort($articles);
+            break;
+    }
+
 
     foreach($articles as $article){
         echo '<p>'.$article.'</p>';
