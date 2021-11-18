@@ -23,6 +23,10 @@ Route::get('articles', function(){
 
     $sort = request()->query('sort', null);
 
+    $count = request()->query('count', 5);
+
+    dump($count);
+
     switch ($sort) {
         case 'desc':
            rsort($articles);
