@@ -14,33 +14,33 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('test.index');
+    return view('welcome');
 });
 
-Route::get('test', function() {
-    $firstname = request()->query('firstname', null);
-    $lastname = request()->query('lastname', null);
-    $data = [
-        'title'=>'Page de '.$firstname. ' '.$lastname,
-        'description'=>'Page de '.$firstname.' '.$lastname,
-        'firstname'=>$firstname,
-        'lastname'=>$lastname,
-    ];
-    return view('test.index', $data);
-});
+// Route::get('test', function() {
+    // $firstname = request()->query('firstname', null);
+    // $lastname = request()->query('lastname', null);
+    // $data = [
+        // 'title'=>'Page de '.$firstname. ' '.$lastname,
+        // 'description'=>'Page de '.$firstname.' '.$lastname,
+        // 'firstname'=>$firstname,
+        // 'lastname'=>$lastname,
+    // ];
+    // return view('test.index', $data);
+// });
 
-Route::get('profile/{firstname}/{lastname}', function($firstname = null, $lastname = null){
-    //return view('profile.index')->with('firstname', $firstname)->with('lastname', $lastname);
-    //return view('profile.index')->with(compact('firstname', 'lastname'));
-    //return view('profile.index')->withFirstname($firstname)->withLastname($lastname);
-    $data = [
-        'title'=>'Mon titre',
-        'description'=>'Ma super description.',
-        'firstname'=>$firstname,
-        'lastname'=>$lastname,
-    ];
-    return view('profile.index', $data);
-});
+// Route::get('profile/{firstname}/{lastname}', function($firstname = null, $lastname = null){
+    // //return view('profile.index')->with('firstname', $firstname)->with('lastname', $lastname);
+    // //return view('profile.index')->with(compact('firstname', 'lastname'));
+    // //return view('profile.index')->withFirstname($firstname)->withLastname($lastname);
+    // $data = [
+        // 'title'=>'Mon titre',
+        // 'description'=>'Ma super description.',
+        // 'firstname'=>$firstname,
+        // 'lastname'=>$lastname,
+    // ];
+    // return view('profile.index', $data);
+// });
 
 //Route::get('test', function(){
        // return view('test.index');
