@@ -17,6 +17,18 @@ Route::get('/', function () {
     return view('test.index');
 });
 
+Route::get('test', function() {
+    $firstname = request()->query('firstname', null);
+    $lastname = request()->query('lastname', null);
+    $data = [
+        'title'=>'Page de '.$firstname. ' '.$lastname,
+        'description'=>'Page de '.$firstname.' '.$lastname,
+        'firstname'=>$firstname,
+        'lastname'=>$lastname,
+    ];
+    return view('test.index', $data);
+});
+
 Route::get('profile/{firstname}/{lastname}', function($firstname = null, $lastname = null){
     //return view('profile.index')->with('firstname', $firstname)->with('lastname', $lastname);
     //return view('profile.index')->with(compact('firstname', 'lastname'));

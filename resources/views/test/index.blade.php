@@ -1,8 +1,9 @@
 <html>
     <head>
-        <body>
-            <h1>Mon titre</h1>
-            <p>Mon paragraphe de test.</p>
-        </body>
+        <meta charset="utf-8">
+        <meta name="description" content="{{ $description ?? ''}}">
     </head>
+    <body>
+        <p>Bonjour {{ $firstname }} {{ $lastname }}</p>
+    </body>
 </html>
