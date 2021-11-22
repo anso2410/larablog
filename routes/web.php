@@ -17,7 +17,7 @@ use App\Http\Controllers\{
 |
 */
 
-Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
+Route::get('profile/{username}', [UserController::class, 'profile'])->name('user.profile');
 
 
 Route::get('/', function () {
