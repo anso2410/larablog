@@ -42,9 +42,9 @@ Route::get('profile/{firstname}/{lastname}', function($firstname = null, $lastna
     return view('profile.index', $data);
 });
 
-Route::get('test', function(){
-        return view('test.index');
- });
+//Route::get('test', function(){
+       // return view('test.index');
+ //});
 
 // Route::get('articles', function(){
     // $articles = ['Article B', 'Article A', 'Article C'];
