@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\{
-    UserController
+    ArticleController, UserController
 };
 
 /*
@@ -18,6 +18,8 @@ use App\Http\Controllers\{
 */
 
 Route::get('profile/{username}', [UserController::class, 'profile'])->name('user.profile');
+
+Route::resource('articles', ArticleController::class );
 
 
 Route::get('/', function () {
