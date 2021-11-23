@@ -16,7 +16,7 @@
       <div class="card mt-4">
         
         <div class="card-body">
-          <h2 class="card-title"><a href="">Laravel c'est top !</a></h2>
+          <h2 class="card-title"><a href="">PHP c'est top !</a></h2>
           <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta.
                Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
           

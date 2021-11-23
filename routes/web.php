@@ -18,7 +18,11 @@ use App\Http\Controllers\{
 */
 
 Route::get('test', function(){
-    return view('test');
+    return view('test')->withTitle('Laravel');
+});
+
+Route::get('test2', function(){
+    return view('test2')->withTitle('PHP');
 });
 
 Route::get('profile/{username}', [UserController::class, 'profile'])->name('user.profile');
