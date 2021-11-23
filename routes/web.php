@@ -17,6 +17,10 @@ use App\Http\Controllers\{
 |
 */
 
+Route::get('test', function(){
+    return view('test');
+});
+
 Route::get('profile/{username}', [UserController::class, 'profile'])->name('user.profile');
 
 Route::resource('articles', ArticleController::class );
