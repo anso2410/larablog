@@ -11,8 +11,10 @@
       <div class="card mt-4">
         
         <div class="card-body">
-          <h2 class="card-title"><a href="">Laravel c'est top !</a></h2>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta.
+          <h2 class="card-title"><a href="">{{ 'Laravel trop cool !!' }}</a></h2>
+          {{-- pour interpreter le script= non echappées = {!! '<script>alert("ok")</script> <p>Laravel trop cool !</p>' !!} --}
+         {{-- pour ne pas interpreter par ex: ce qui vient du user( évite script malicieux) = {{ '<script>alert("ok")</script> <p>Laravel trop cool !</p>' }} --}}
+           <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta.
                Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
           
           <span class="auhtor">Par <a href="">Hamid</a></span> <br>
@@ -44,3 +46,4 @@
   </div>
 
   @stop
+ 
