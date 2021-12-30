@@ -1,4 +1,37 @@
-@forelse($create)
+
+@switch($number)
+@case(2)
+   nombre est égal à 2
+    @break
+
+@case(15)
+nombre est égal à 15
+    @break
+
+@default
+    nombre ni égal à 2 ni à 15.
+@endswitch
+
+{{-- @isset($fruits) --}}
+    {{-- {{ count($fruits) }} --}}
+{{-- @endif --}}
+
+{{-- si besoin inserer code php
+    @php
+        echo rand(1, 15);
+    @endphp
+    
+    
+    --}}
+
+{{-- si fruit on affiche dans le paragraphe sinon --}}
+
+{{-- @forelse($fruits as $fruit) --}}
+    {{-- <p>{{ $fruit }}</p> --}}
+{{-- @empty --}}
+    {{-- Aucun fruit. --}}
+{{-- @endforelse --}}
+{{--  --}}
 
 {{-- @foreach($fruits as $fruit) --}}
 {{-- <p>{{ $fruit }}</p> --}}

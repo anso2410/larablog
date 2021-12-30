@@ -20,7 +20,7 @@ use App\Http\Controllers\{
 Route::get('structures', function(){
     $fruits = ['pommes', 'oranges', 'mandarines', 'citrons'];
     $data = [
-        'number'=>21,
+        'number'=>2,
         'fruits'=>$fruits,
     ];
     return view('structures', $data);
