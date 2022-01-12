@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdatePhoneColumnInUsersTable extends Migration
+class RenameColumnTitleToNameInCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class UpdatePhoneColumnInUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('phone', 15)->nullable()->change();
+        Schema::table('categories', function (Blueprint $table) {
+            //
         });
     }
 
@@ -25,8 +25,8 @@ class UpdatePhoneColumnInUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('phone')->nullable(false)->change();
+        Schema::table('categories', function (Blueprint $table) {
+            //
         });
     }
 }
