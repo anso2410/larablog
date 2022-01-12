@@ -14,7 +14,7 @@ class RenameColumnTitleToNameInCategoriesTable extends Migration
     public function up()
     {
         Schema::table('categories', function (Blueprint $table) {
-            //
+            $table->renameColumn('title', 'name');
         });
     }
 
@@ -26,7 +26,7 @@ class RenameColumnTitleToNameInCategoriesTable extends Migration
     public function down()
     {
         Schema::table('categories', function (Blueprint $table) {
-            //
+            $table->renameColumn('name', 'title');
         });
     }
 }
