@@ -18,9 +18,13 @@ class RegisterController extends Controller
         return view('auth.register', $data);
     }
 
-    public function register(Request $request) // traitement du formulaire inscription
+    public function register() // traitement du formulaire inscription
     {
-      dd( $request->all());
+      request()->validate([
+            'name'=>'required|min:3|max:20|unique:users',
+            'email'=>'required|email|unique:users',
+            'password'=>'required|between:9,20',
+      ]);
     } 
 
 

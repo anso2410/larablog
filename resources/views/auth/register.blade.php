@@ -21,17 +21,38 @@
                 <div class="card-body">
 
                     <form action="{{ route('post.register') }}" method="post">
+
+                        @csrf
+
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" name="name" class="form-control">
+                            {{-- affichage message d'erreur --}}
+                            @error('name')
+                            <div class="error">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" name="email" class="form-control">
+                            {{-- affichage message d'erreur --}}
+                            @error('email')
+                            <div class="error">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" name="password" class="form-control">
+                            {{-- affichage message d'erreur --}}
+                            @error('password')
+                            <div class="error">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                         {{-- <div class="form-group form-check"> --}}
                         {{-- <input type="checkbox" class="form-check-input" id="exampleCheck1"> --}}
