@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class RegisterController extends Controller
 {
@@ -25,6 +26,15 @@ class RegisterController extends Controller
             'email'=>'required|email|unique:users',
             'password'=>'required|between:9,20',
       ]);
+
+      // création d'un nouvel utilisateur
+
+      $user = new User;
+      $user->name = request('name');
+      $user ->email = request('email');
+      $user->password = bcrypt(request('password'));
+
+      $user->save();
     } 
 
 
