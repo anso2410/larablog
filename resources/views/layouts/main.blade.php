@@ -19,6 +19,9 @@
     h1.title{
       font-size: 1.25rem;
     }
+    div.error {
+      color: #f55;
+    }
   </style>
 
 </head>
