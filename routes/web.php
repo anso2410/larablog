@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\{
     ArticleController, 
     UserController,
@@ -20,15 +19,16 @@ use App\Http\Controllers\{
 */
 
 Route::get('register',[RegisterController::class, 'index'])->name('register');
-
 Route::get('profile/{username}', [UserController::class, 'profile'])->name('user.profile');
-
-Route::resource('articles', ArticleController::class );
-
-
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('register', [RegisterController::class, 'register'])->name('post.register');
+
+
+
+Route::resource('articles', ArticleController::class );
 
 // Route::get('structures', function(){
     // $fruits = ['pommes', 'oranges', 'mandarines', 'citrons'];
