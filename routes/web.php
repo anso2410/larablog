@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\{
-    ArticleController, UserController
+    ArticleController, 
+    UserController,
+    RegisterController
 };
 
 /*
@@ -17,22 +19,7 @@ use App\Http\Controllers\{
 |
 */
 
-Route::get('structures', function(){
-    $fruits = ['pommes', 'oranges', 'mandarines', 'citrons'];
-    $data = [
-        'number'=>2,
-        'fruits'=>$fruits,
-    ];
-    return view('structures', $data);
-});
-
-Route::get('test', function(){
-    return view('test')->withTitle('Laravel');
-});
-
-Route::get('test2', function(){
-    return view('test2')->withTitle('PHP');
-});
+Route::get('register',[RegisterController::class, 'index'])->name('register');
 
 Route::get('profile/{username}', [UserController::class, 'profile'])->name('user.profile');
 
@@ -42,6 +29,29 @@ Route::resource('articles', ArticleController::class );
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::get('structures', function(){
+    // $fruits = ['pommes', 'oranges', 'mandarines', 'citrons'];
+    // $data = [
+        // 'number'=>2,
+        // 'fruits'=>$fruits,
+    // ];
+    // return view('structures', $data);
+// });
+
+// Route::get('test', function(){
+    // return view('test')->withTitle('Laravel');
+// });
+
+// Route::get('test2', function(){
+    // return view('test2')->withTitle('PHP');
+// });
+
+
+
+
+
+
 
 
 // Route::get('test', function() {
