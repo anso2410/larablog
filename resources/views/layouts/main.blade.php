@@ -25,14 +25,21 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="{{ url('/') }}">Accueil</a>
+          </li>
+
+          @if(Auth::guest()) <!-- si utilisateur non inscrit ou non connecté -->
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('login') }}">Connexion</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Connexion</a>
+            <a class="nav-link" href="{{ route('register') }}">Inscription</a>
           </li>
+          @else
           <li class="nav-item">
-            <a class="nav-link" href="#">Inscription</a>
+            <a class="nav-link" href="#">Deconnexion</a>
           </li>
+          @endif
         </ul>
       </div>
     </div>

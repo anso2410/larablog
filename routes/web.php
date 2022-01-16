@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     ArticleController, 
     UserController,
-    RegisterController
+    RegisterController,
+    LoginController
 };
 
 /*
@@ -18,13 +19,17 @@ use App\Http\Controllers\{
 |
 */
 
-Route::get('register',[RegisterController::class, 'index'])->name('register');
+Route::get('register', [RegisterController::class, 'index'])->name('register');
+Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::get('profile/{username}', [UserController::class, 'profile'])->name('user.profile');
 Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Route::post('register', [RegisterController::class, 'register'])->name('post.register');
+Route::post('login', [LoginController::class, 'login'])->name('post.login');
 
 
 
