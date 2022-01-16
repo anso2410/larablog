@@ -28,18 +28,20 @@
             <a class="nav-link" href="{{ url('/') }}">Accueil</a>
           </li>
 
-          @if(Auth::guest()) <!-- si utilisateur non inscrit ou non connecté -->
+          @guest <!-- si utilisateur non inscrit ou non connecté -->
           <li class="nav-item">
             <a class="nav-link" href="{{ route('login') }}">Connexion</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('register') }}">Inscription</a>
           </li>
-          @else
+          @endguest
+
+          @auth
           <li class="nav-item">
             <a class="nav-link" href="#">Deconnexion</a>
           </li>
-          @endif
+          @endauth
         </ul>
       </div>
     </div>
