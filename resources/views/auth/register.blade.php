@@ -10,7 +10,11 @@
 
         <div class="col-lg-9">
 
-
+            @if (session('success'))
+                <div class="alert alert-success mt-3 text-center">
+                    {{ session('success') }}
+                </div>
+            @endif
             <!-- /.card -->
 
             <div class="card card-outline-secondary my-4">
@@ -29,9 +33,9 @@
                             <input type="text" name="name" class="form-control" value="{{ old('name') }}">
                             {{-- affichage message d'erreur --}}
                             @error('name')
-                            <div class="error">
-                                {{ $message }}
-                            </div>
+                                <div class="error">
+                                    {{ $message }}
+                                </div>
                             @enderror
                         </div>
                         <div class="form-group">
@@ -39,9 +43,9 @@
                             <input type="email" name="email" class="form-control" value="{{ old('email') }}">
                             {{-- affichage message d'erreur --}}
                             @error('email')
-                            <div class="error">
-                                {{ $message }}
-                            </div>
+                                <div class="error">
+                                    {{ $message }}
+                                </div>
                             @enderror
                         </div>
                         <div class="form-group">
@@ -49,9 +53,9 @@
                             <input type="password" name="password" class="form-control">
                             {{-- affichage message d'erreur --}}
                             @error('password')
-                            <div class="error">
-                                {{ $message }}
-                            </div>
+                                <div class="error">
+                                    {{ $message }}
+                                </div>
                             @enderror
                         </div>
                         {{-- <div class="form-group form-check"> --}}

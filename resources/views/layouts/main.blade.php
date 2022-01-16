@@ -49,7 +49,7 @@
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Formation Laravel 2020</p>
+      <p class="m-0 text-center text-white">Copyright &copy; Blog Laravel 2022</p>
     </div>
     <!-- /.container -->
   </footer>

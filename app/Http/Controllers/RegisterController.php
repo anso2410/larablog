@@ -21,29 +21,27 @@ class RegisterController extends Controller
 
     public function register(Request $request) // traitement du formulaire inscription
     {
-      request()->validate([
-            'name'=>'required|min:3|max:20|unique:users',
-            'email'=>'required|email|unique:users',
-            'password'=>'required|between:9,20',
-      ]);
+        request()->validate([
+            'name' => 'required|min:3|max:20|unique:users',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|between:9,20',
+        ]);
 
-      // création d'un nouvel utilisateur
+        // création d'un nouvel utilisateur
 
-      $user = new User;
-      $user->name = request('name');
-      $user ->email = request('email');
-      $user->password = bcrypt(request('password'));
-
-    //   $user->name = $request->name;
-    //   $user->email = $request->email;
-    //   $user->password = bcrypt($request->password);
-
-      
-      $user->save();
-
-      $success = 'Inscription terminée.';
-      return back()->withSuccess($success);
-    } 
+        $user = new User;
+        $user->name = request('name');
+        $user->email = request('email');
+        $user->password = bcrypt(request('password'));
+        //   $user->name = $request->name;
+        //   $user->email = $request->email;
+        //   $user->password = bcrypt($request->password);
 
 
+        $user->save();
+
+        $success = 'Inscription terminée.';
+
+        return back()->withSuccess($success);
+    }
 }
