@@ -10,16 +10,12 @@
 
         <div class="col-lg-9">
 
-            @if (session('success'))
-                <div class="alert alert-success mt-3 text-center">
-                    {{ session('success') }}
-                </div>
+            @if (session('success')) {{-- message connexion réussie --}}
+                <div class="alert alert-success mt-3 text-center">{{ session('success') }}</div>
             @endif
 
-            @if (session('error'))
-                <div class="alert alert-danger mt-3 text-center">
-                    {{ session('error') }}
-                </div>
+            @if (session('error'))  {{--message erreur connexion --}}
+                <div class="alert alert-danger mt-3 text-center">{{ session('error') }}</div>
             @endif
             <!-- /.card -->
 
@@ -39,9 +35,7 @@
                             <input type="email" name="email" class="form-control" value="{{ old('email') }}">
                             {{-- affichage message d'erreur --}}
                             @error('email')
-                                <div class="error">
-                                    {{ $message }}
-                                </div>
+                                <div class="error">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
@@ -49,9 +43,7 @@
                             <input type="password" name="password" class="form-control">
                             {{-- affichage message d'erreur --}}
                             @error('password')
-                                <div class="error">
-                                    {{ $message }}
-                                </div>
+                                <div class="error">{{ $message }}</div>
                             @enderror
                         </div>
 
