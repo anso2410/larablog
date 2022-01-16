@@ -15,6 +15,12 @@
                     {{ session('success') }}
                 </div>
             @endif
+
+            @if (session('error'))
+                <div class="alert alert-danger mt-3 text-center">
+                    {{ session('error') }}
+                </div>
+            @endif
             <!-- /.card -->
 
             <div class="card card-outline-secondary my-4">
@@ -50,8 +56,8 @@
                         </div>
 
                         <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="remember" name="remember">
-                        <label class="form-check-label" for="remember">Se souvenir de moi</label>
+                            <input type="checkbox" class="form-check-input" id="remember" name="remember" value="1">
+                            <label class="form-check-label" for="remember">Se souvenir de moi</label>
                         </div>
                         <button type="submit" class="btn btn-primary">Connexion</button>
                     </form>

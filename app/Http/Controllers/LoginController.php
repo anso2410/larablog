@@ -18,6 +18,9 @@ class LoginController extends Controller
 
     public function login() // traitement du login 
     {
-        
+        request()->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
     }
 }
