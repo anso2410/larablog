@@ -19,7 +19,7 @@ class RegisterController extends Controller
         return view('auth.register', $data);
     }
 
-    public function register() // traitement du formulaire inscription
+    public function register(Request $request) // traitement du formulaire inscription
     {
       request()->validate([
             'name'=>'required|min:3|max:20|unique:users',
@@ -34,7 +34,15 @@ class RegisterController extends Controller
       $user ->email = request('email');
       $user->password = bcrypt(request('password'));
 
+    //   $user->name = $request->name;
+    //   $user->email = $request->email;
+    //   $user->password = bcrypt($request->password);
+
+      
       $user->save();
+
+      $success = 'Inscription terminée.';
+      return back()->withSuccess($success);
     } 
 
 
