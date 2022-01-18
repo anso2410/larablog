@@ -5,7 +5,8 @@ use App\Http\Controllers\{
     ArticleController, 
     UserController,
     RegisterController,
-    LoginController
+    LoginController,
+    LogoutController
 };
 
 /*
@@ -21,6 +22,7 @@ use App\Http\Controllers\{
 
 Route::get('register', [RegisterController::class, 'index'])->name('register');
 Route::get('login', [LoginController::class, 'index'])->name('login');
+Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
 Route::get('profile/{username}', [UserController::class, 'profile'])->name('user.profile');
 Route::get('/', function () {
     return view('welcome');

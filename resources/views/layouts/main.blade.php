@@ -39,7 +39,7 @@
 
           @auth
           <li class="nav-item">
-            <a class="nav-link" href="#">Deconnexion</a>
+            <a class="nav-link" href="{{ route('logout') }}">Deconnexion</a>
           </li>
           @endauth
         </ul>
