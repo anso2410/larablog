@@ -9,6 +9,7 @@ class LoginController extends Controller
 {
     public function index() // formulaire de connexion 
     {
+        
         $data = [
             'title' => 'Login -' . config('app.name'),
             'description' => 'Connexion à votre comptre -' . config('app.name'),
@@ -19,6 +20,8 @@ class LoginController extends Controller
 
     public function login() // traitement du login 
     {
+        
+
         request()->validate([
             'email' => 'required|email',
             'password' => 'required',
