@@ -7,7 +7,8 @@ use App\Http\Controllers\{
     RegisterController,
     LoginController,
     LogoutController,
-    ForgotController
+    ForgotController,
+    ResetController
 };
 
 /*
@@ -26,7 +27,9 @@ Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
 Route::get('forgot', [ForgotController::class, 'index'])->name('forgot');
 
+Route::get('reset/{token}', [ResetController::class, 'index'])->name('reset');
 Route::get('profile/{username}', [UserController::class, 'profile'])->name('user.profile');
+
 Route::get('/', function () {
     return view('welcome');
 });
