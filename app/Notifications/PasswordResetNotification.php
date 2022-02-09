@@ -47,7 +47,7 @@ class PasswordResetNotification extends Notification
                     ->subject('Oublie de mot de passe')
                     ->line('Veuillez cliquer sur le lien ci dessous pour réinitialiser votre mot de passe ')
                     ->action('Réinitialiser', url('reset/'.$this->token))
-                    ->salutation('A+!');
+                    ->salutation('A+! '.config('app.name'));
     }
 
     /**
