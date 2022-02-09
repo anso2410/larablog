@@ -11,12 +11,13 @@ class ResetController extends Controller
     {
         $password_reset = DB::table('password_resets')->where('token', $token)->first();
 
+        abort_if(!$password_reset, 403);
+        
         $data = [
-            'title' => $description = 'réinitialisation de mot de passe - '.config('app.name'),
+            'title' => $description = 'réinitialisation de mot de passe - ' . config('app.name'),
             'description' => $description,
             'password_reset' => $password_reset,
         ];
         return view('auth.reset', $data);
-        
-    } 
+    }
 }
