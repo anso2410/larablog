@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use  Illuminate\Support\Str;
-// use Illuminate\Support\Facades\DB;
+use  Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class ForgotController extends Controller
 {
@@ -26,17 +26,17 @@ class ForgotController extends Controller
             'email'=>'required|email|exists:users',
         ]);
 
-        // $token = Str::uuid();
+        $token = Str::uuid();
 
-        // DB::table('password_resets')->insert([
-        // 'email'=>request('email'),
-        // 'token'=>$token,
-        // 'created_at'=>now(),
-        // ]);
+         DB::table('password_resets')->insert([
+        'email'=>request('email'),
+        'token'=>$token,
+         'created_at'=>now(),
+         ]);
 
         //envoi de notification avec un lien sécurisé
 
-        // $success = 'vérifier votre boite mail et suivez les instructions.';
-        // return back()->withSuccess($success);
+        $success = 'vérifier votre boite mail et suivez les instructions.';
+        return back()->withSuccess($success);
     }
 }
