@@ -64,6 +64,9 @@
                         {{-- </div> --}}
                         <button type="submit" class="btn btn-primary">Inscription</button>
                     </form>
+
+                    <p class="mt-3"><a href="{{ route('login') }}">J'ai déjà un compte</a></p>
+
                 </div>
             </div>
             <!-- /.card -->

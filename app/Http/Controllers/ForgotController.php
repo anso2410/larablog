@@ -34,6 +34,11 @@ class ForgotController extends Controller
             'token'=>$token,
             'created_at'=>now(),
         ]);
+
+        //envoi de notification avec un lien sécurisé
+
+        $success = 'vérifier votre boite mail et suivez les instructions.';
+        return back()->withSuccess($success);
     }
 
 }

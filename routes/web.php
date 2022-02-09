@@ -25,6 +25,7 @@ Route::get('register', [RegisterController::class, 'index'])->name('register');
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
 Route::get('forgot', [ForgotController::class, 'index'])->name('forgot');
+
 Route::get('profile/{username}', [UserController::class, 'profile'])->name('user.profile');
 Route::get('/', function () {
     return view('welcome');

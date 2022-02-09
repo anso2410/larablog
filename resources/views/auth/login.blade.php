@@ -53,6 +53,10 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Connexion</button>
                     </form>
+
+                  <p class="mt-3"><a href="{{  route('forgot') }}">J'ai oublié mon mot de passe</a></p>
+                  <p class="mt-3"><a href="{{  route('register') }}">Je n'ai pas un compte</a></p>
+                    
                 </div>
             </div>
             <!-- /.card -->
