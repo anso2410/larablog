@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Notifications\PasswordResetNotification;
 use App\Models\User;
 use  Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
+use 
 
 class ForgotController extends Controller
 {
