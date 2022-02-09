@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Notifications\PasswordResetNotification;
+use App\Notifications\PasswordResetNotification;
 use App\Models\User;
 use  Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
