@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Notifications\PasswordResetNotification;
+use App\Models\User;
 use  Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
@@ -35,6 +37,10 @@ class ForgotController extends Controller
          ]);
 
         //envoi de notification avec un lien sécurisé
+         // $user correspond à l'email
+        $user = User::whereEmail(request('email'))->firstOrFail();
+
+        $user->notify(new PasswordResetNotification($token));
 
         $success = 'vérifier votre boite mail et suivez les instructions.';
         return back()->withSuccess($success);
