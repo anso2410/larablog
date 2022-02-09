@@ -14,7 +14,7 @@ class ResetController extends Controller
         abort_if(!$password_reset, 403);
         
         $data = [
-            'title' => $description = 'réinitialisation de mot de passe - ' . config('app.name'),
+            'title' => $description = 'réinitialisation de mot de passe - '.config('app.name'),
             'description' => $description,
             'password_reset' => $password_reset,
         ];
