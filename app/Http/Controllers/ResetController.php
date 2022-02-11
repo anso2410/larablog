@@ -46,8 +46,10 @@ class ResetController extends Controller
        $user->password = bcrypt(request('password'));
        $user->save();
 
+       DB::table('password_resets')->where('email', request('email'))->delete();
+
        $success = 'Mot de passe mis à jour.';
-       return redirect()->route('login');
+       return redirect()->route('login')->withSuccess($success);
 
     }
 }
