@@ -23,6 +23,11 @@ class ResetController extends Controller
 
     public function reset() //traitement de reinitialisation du mot de passe
     {
+       request()->validate([
+            'email'=>'required|email',
+            'token'=>'required',
+            'password'=>'required|between:9,20|confirmed',
 
+       ]);
     }
 }

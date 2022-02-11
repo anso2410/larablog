@@ -28,7 +28,7 @@
                 <!-- /.formulaire inscription -->
                 <div class="card-body">
 
-                    <form action="" method="post">
+                    <form action="{{ route('post.reset') }}" method="post">
 
                         @csrf
 
