@@ -46,5 +46,8 @@ class ResetController extends Controller
        $user->password = bcrypt(request('password'));
        $user->save();
 
+       $success = 'Mot de passe mis à jour.';
+       return redirect()->route('login');
+
     }
 }
