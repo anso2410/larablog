@@ -20,4 +20,9 @@ class ResetController extends Controller
         ];
         return view('auth.reset', $data);
     }
+
+    public function reset() //traitement de reinitialisation du mot de passe
+    {
+
+    }
 }
