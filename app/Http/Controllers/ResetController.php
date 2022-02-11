@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;;
+use Illuminate\Support\Facades\DB;
 
 class ResetController extends Controller
 {
@@ -29,5 +29,16 @@ class ResetController extends Controller
             'password'=>'required|between:9,20|confirmed',
 
        ]);
+
+        //vérification des entrées dans la table password reset
+       if(!DB::table('password_resets')
+       ->where('email', request('email'))
+       ->where('token', request('token'))->count()
+       ){
+           $error = 'Aucun email ne correspond, vérifiez votre adresse email.';
+           return back()->withError($error)->withInput();
+           
+       }
+
     }
 }
