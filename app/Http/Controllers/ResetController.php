@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class ResetController extends Controller
 {
@@ -39,6 +40,11 @@ class ResetController extends Controller
            return back()->withError($error)->withInput();
            
        }
+
+       $user = user::whereEmail(request('email'))->firstOrFail();
+
+       $user->password = bcrypt(request('password'));
+       $user->save();
 
     }
 }
