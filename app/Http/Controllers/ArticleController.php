@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Article;
 
 class ArticleController extends Controller
 {
@@ -12,8 +13,18 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return 'Liste des articles';
+    {   
+        $articles = Article::orderByDesc('id')->get();
+
+        //$count = Article::count();
+        //dd($count);
+        //$articles = Article::orderByDesc('id')->take(15)->get();
+        //$article = Article::where('title', 'Debitis illum omnis sunt.')->firstOrFail();
+        //dd($article);
+       
+        // foreach ($articles as $article) {
+        //    dump($article->id, $article->title); /**$article->slug, $article->content, $article->created_at->diffForHumans());*/
+        // }
     }
 
     /**
