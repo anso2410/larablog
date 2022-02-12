@@ -16,6 +16,14 @@ class ArticleController extends Controller
     {   
         $articles = Article::orderByDesc('id')->get();
 
+        $data = [
+            'title'=>'Les articles du blog - '.config('app.name'),
+            'description'=>'Retrouvez tous les articles de '.config('app.name'),
+            'articles'=>$articles,
+        ];
+
+        return view('article.index', $data);
+
         //$count = Article::count();
         //dd($count);
         //$articles = Article::orderByDesc('id')->take(15)->get();
