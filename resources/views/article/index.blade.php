@@ -21,7 +21,7 @@
                     <p class="card-text">{{Str::words($article->content, 5)}}</p>
 
                     <span class="auhtor">Par <a href="">Hamid</a></span> <br>
-                    <span class="time">Il y'a 1 heure</span>
+                    <span class="time">{{ $article->created_at->diffForHumans() }}</span>
                 </div>
             </div>
             @endforeach
