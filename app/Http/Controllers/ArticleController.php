@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
 
+use Illuminate\Support\Str;
+
 class ArticleController extends Controller
 {
     protected $perPage = 15;
@@ -66,8 +68,12 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        /**return 'Je suis l\'article avec l\'id '.$article->id;*/
-        return 'je suis le message avec l\'id '.$article->id;
+        $data = [
+            'title'=>$article->title.' - '.config('app.name'),
+            'description'=>$article->title.'. '.Str::words($article->content, 10),
+        ];
+        return view('article.show', $data);
+       
     }
 
     /**
