@@ -15,7 +15,7 @@
             <div class="card mt-4">
 
                 <div class="card-body">
-                    <h2 class="card-title"><a href="{{ route('articles.show', ['article'=>$article->id]) }}">{{ $article->title }}</a></h2>
+                    <h2 class="card-title"><a href="{{ route('articles.show', ['article'=>$article->slug]) }}">{{ $article->title }}</a></h2>
                     {{-- pour interpreter le script= non echappées = {!! '<script>alert("ok")</script> <p>Laravel trop cool !</p>' !!} --}
                     {{-- pour ne pas interpreter par ex: ce qui vient du user( évite script malicieux) = {{ '<script>alert("ok")</script> <p>Laravel trop cool !</p>' }} --}}
                     <p class="card-text">{{Str::words($article->content, 5)}}</p>
