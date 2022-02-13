@@ -20,9 +20,12 @@
                     {{-- pour ne pas interpreter par ex: ce qui vient du user( évite script malicieux) = {{ '<script>alert("ok")</script> <p>Laravel trop cool !</p>' }} --}}
                     <p class="card-text">{{Str::words($article->content, 5)}}</p>
 
-                    <span class="auhtor">Par <a href="">{{ $article->user->name }}</a></span> <br>
+                    <span class="auhtor">Par 
+                        <a href="{{ route('user.profile', ['user'=>$article->user->id]) }}">{{ $article->user->name }}</a>
+                        inscrit le {{ $article->user->created_at->format('d/m/y') }} 
+                    </span> <br>
                     <span class="time">
-                        {{ $article->created_at->diffForHumans() }}</span> {{-- isoFormat('LLL')  --}}
+                      posté  {{ $article->created_at->diffForHumans() }}</span> {{-- isoFormat('LLL')  --}}
                 </div>
             </div>
             @endforeach

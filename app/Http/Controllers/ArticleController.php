@@ -7,7 +7,7 @@ use App\Models\Article;
 
 class ArticleController extends Controller
 {
-    protected $perPage = 5;
+    protected $perPage = 15;
     /**
      * Display a listing of the resource.
      *
