@@ -71,6 +71,7 @@ class ArticleController extends Controller
         $data = [
             'title'=>$article->title.' - '.config('app.name'),
             'description'=>$article->title.'. '.Str::words($article->content, 10),
+            'article'=>$article,
         ];
         return view('article.show', $data);
        
