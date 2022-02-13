@@ -29,6 +29,14 @@
 
             {{-- fin du post --}}
 
+            {{-- pagination --}}
+
+            <div class="pagination mt-4">
+                {{ $articles->links() }}
+            </div>
+            
+            {{-- fin pagination --}}
+
             <!-- /.card -->
 
             {{-- <div class="card card-outline-secondary my-4"> --}}
