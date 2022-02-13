@@ -7,6 +7,7 @@ use App\Models\Article;
 
 class ArticleController extends Controller
 {
+    protected $perPage = 5;
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +15,7 @@ class ArticleController extends Controller
      */
     public function index()
     {   
-        $articles = Article::orderByDesc('id')->paginate(5);
+        $articles = Article::orderByDesc('id')->paginate($this->perPage);
        
 
         $data = [
