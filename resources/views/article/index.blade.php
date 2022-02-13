@@ -21,7 +21,8 @@
                     <p class="card-text">{{Str::words($article->content, 5)}}</p>
 
                     <span class="auhtor">Par <a href="">Hamid</a></span> <br>
-                    <span class="time">{{ $article->created_at->diffForHumans() }}</span>
+                    <span class="time">
+                        {{ $article->created_at->diffForHumans() }}</span> {{-- isoFormat('LLL')  --}}
                 </div>
             </div>
             @endforeach

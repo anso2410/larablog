@@ -14,7 +14,8 @@ class ArticleController extends Controller
      */
     public function index()
     {   
-        $articles = Article::orderByDesc('id')->get();
+        $articles = Article::orderByDesc('id')->paginate(5);
+       
 
         $data = [
             'title'=>'Les articles du blog - '.config('app.name'),
@@ -64,7 +65,8 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        return 'Je suis l\'article avec l\'id '.$article->id;
+        /**return 'Je suis l\'article avec l\'id '.$article->id;*/
+        return 'je suis le message avec l\'id '.$article->id;
     }
 
     /**
