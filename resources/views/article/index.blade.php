@@ -20,7 +20,7 @@
                     {{-- pour ne pas interpreter par ex: ce qui vient du user( évite script malicieux) = {{ '<script>alert("ok")</script> <p>Laravel trop cool !</p>' }} --}}
                     <p class="card-text">{{Str::words($article->content, 5)}}</p>
 
-                    <span class="auhtor">Par <a href="">Hamid</a></span> <br>
+                    <span class="auhtor">Par <a href="">{{ $article->user->name }}</a></span> <br>
                     <span class="time">
                         {{ $article->created_at->diffForHumans() }}</span> {{-- isoFormat('LLL')  --}}
                 </div>
