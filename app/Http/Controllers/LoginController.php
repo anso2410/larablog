@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function__construct()
+    public function __construct()
     {
         $this->middleware('guest');
     }

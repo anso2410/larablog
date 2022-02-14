@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\DB;
 class ForgotController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
     public function index() //formulaire d'oublie de mot de passe 
     {
         $data = [

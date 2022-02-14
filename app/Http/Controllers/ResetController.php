@@ -8,6 +8,12 @@ use App\Models\User;
 
 class ResetController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+    
     public function index(string $token) //formulaire de réinitialisation de mdp
     {
         $password_reset = DB::table('password_resets')->where('token', $token)->first();
