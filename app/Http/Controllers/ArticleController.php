@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
-
 use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
-    protected $perPage = 15;
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'show');
+    }
+
+    protected $perPage = 12;
     /**
      * Display a listing of the resource.
      *
