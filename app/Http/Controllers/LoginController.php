@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    public function__construct()
+    {
+        $this->middleware('guest');
+    }
+
     public function index() // formulaire de connexion 
     {
         
