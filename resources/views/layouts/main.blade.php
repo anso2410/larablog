@@ -39,7 +39,7 @@
 
           @auth
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('articles.create') }}">Ajoutez un Post</a>
+            <a class="nav-link" href="{{ route('articles.create') }}">Ajoutez une publication</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}">Deconnexion</a>

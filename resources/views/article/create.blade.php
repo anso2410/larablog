@@ -1,0 +1,58 @@
+@extends('layouts.main')
+
+@section('content')
+
+    <div class="row">
+        <div class="col-lg-3">
+            @include('includes.sidebar')
+        </div>
+        <!-- /.col-lg-3 -->
+
+        <div class="col-lg-9">
+
+            @if (session('success'))
+                <div class="alert alert-success mt-3 text-center">
+                    {{ session('success') }}
+                </div>
+            @endif
+            <!-- /.card -->
+
+            <div class="card card-outline-secondary my-4">
+                <div class="card-header">
+                    Ajouter une publication
+                </div>
+
+                <div class="card-body">
+
+                    <form action="{{ route('articles.store') }}" method="post">
+
+                        @csrf
+
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" name="title" class="form-control" value="{{ old('title') }}">
+                            {{-- affichage message d'erreur --}}
+                            @error('title')
+                                <div class="error">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="content">Contenu</label>
+                            <textarea name="content" cols="30" rows="10"
+                                placeholder="Contenu de la publication">{{ old('content') }}</textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Ajouter la publication</button>
+                    </form>
+
+                </div>
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col-lg-9 -->
+    </div>
+
+@stop
