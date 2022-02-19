@@ -41,11 +41,11 @@
 
                         <div class="form-group">
                             <label for="content">Contenu</label>
-                            <textarea name="content" cols="30" rows="10"
+                            <textarea class="form-control" name="content" cols="30" rows="5"
                                 placeholder="Contenu de la publication">{{ old('content') }}</textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Ajouter la publication</button>
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
                     </form>
 
                 </div>
