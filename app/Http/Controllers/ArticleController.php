@@ -50,7 +50,11 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return 'Formulaire de creation';
+        $data = [
+            'title' => $description = 'Ajouter un nouveau post',
+            'description' => $description,
+        ];
+        return view('article.create', $data);
     }
 
     /**
