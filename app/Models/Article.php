@@ -10,7 +10,7 @@ class Article extends Model
     // relation entre article et le user: un article appartient à un utilisateur.
 
     use HasFactory;
-    
+
     public function getRouteKeyName()
     {
         return 'slug';
@@ -19,5 +19,12 @@ class Article extends Model
     public function user()
     {
         return $this->belongsTo(User::class); // un article appartient à un utilisateur
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class)->withDefault([
+            'name' => 'Catégorie anonyme.',
+        ]);
     }
 }

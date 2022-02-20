@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Article;
 use Illuminate\Support\Str;
+use App\Models\{
+    Article,
+    Category,
+};
+
 
 class ArticleController extends Controller
 {
@@ -20,14 +24,14 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $articles = Article::orderByDesc('id')->paginate($this->perPage);
-       
+
 
         $data = [
-            'title'=>'Les articles du blog - '.config('app.name'),
-            'description'=>'Retrouvez tous les articles de '.config('app.name'),
-            'articles'=>$articles,
+            'title' => 'Les articles du blog - ' . config('app.name'),
+            'description' => 'Retrouvez tous les articles de ' . config('app.name'),
+            'articles' => $articles,
         ];
 
         return view('article.index', $data);
@@ -37,7 +41,7 @@ class ArticleController extends Controller
         //$articles = Article::orderByDesc('id')->take(15)->get();
         //$article = Article::where('title', 'Debitis illum omnis sunt.')->firstOrFail();
         //dd($article);
-       
+
         // foreach ($articles as $article) {
         //    dump($article->id, $article->title); /**$article->slug, $article->content, $article->created_at->diffForHumans());*/
         // }
@@ -50,6 +54,16 @@ class ArticleController extends Controller
      */
     public function create()
     {
+        $categories = Category::get();
+
+        $articles = Article::all();
+
+        foreach ($articles as $article) {
+
+            dump($article->category->name);
+        }
+        exit;
+
         $data = [
             'title' => $description = 'Ajouter un nouveau post',
             'description' => $description,
@@ -78,12 +92,11 @@ class ArticleController extends Controller
     public function show(Article $article)
     {
         $data = [
-            'title'=>$article->title.' - '.config('app.name'),
-            'description'=>$article->title.'. '.Str::words($article->content, 10),
-            'article'=>$article,
+            'title' => $article->title . ' - ' . config('app.name'),
+            'description' => $article->title . '. ' . Str::words($article->content, 10),
+            'article' => $article,
         ];
         return view('article.show', $data);
-       
     }
 
     /**
