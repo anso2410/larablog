@@ -56,17 +56,10 @@ class ArticleController extends Controller
     {
         $categories = Category::get();
 
-        $articles = Article::all();
-
-        foreach ($articles as $article) {
-
-            dump($article->category->name);
-        }
-        exit;
-
         $data = [
             'title' => $description = 'Ajouter un nouveau post',
             'description' => $description,
+            'categories' => $categories,
         ];
         return view('article.create', $data);
     }
