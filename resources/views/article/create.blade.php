@@ -43,6 +43,26 @@
                             <label for="content">Contenu</label>
                             <textarea class="form-control" name="content" cols="30" rows="5"
                                 placeholder="Contenu de la publication">{{ old('content') }}</textarea>
+                            @error('content')
+                                <div class="error">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">Catégorie</label>
+                            <select name="category" class="form-control">
+                                <option value=""></option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('category')
+                                <div class="error">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
 
                         <button type="submit" class="btn btn-primary">Ajouter</button>
