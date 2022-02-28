@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use App\Models\{
     Article,
     Category,
 };
+
+
 
 
 class ArticleController extends Controller
@@ -70,10 +73,18 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
         //sauvegarde d'un nouvel article
-        dd(request()->all());
+        
+        $article = new Article;
+
+        $article->user_id = auth()->id();
+        $article->category_id = request('category', null);
+        $article->title =request('title');
+        $article->content =request('content');
+        $article->save();
+
     }
 
     /**
