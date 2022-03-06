@@ -75,25 +75,39 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
+        $article = Auth::user()->articles()->create(request()->validate([
             'title'=>['required', 'max:20', 'unique:articles,title'],
             'content'=>['required'],
             'category'=>['sometimes', 'nullable', 'exists:categories,id'],
-        ],
-        [
-            'title.required' => 'Y a pas de titre ahahhah!',
-            'title.max' => 'Trop long'
-        ]);
+        ]));
+
+        $article->category_id = request('category', null);
+        $article->save();
+
+
+        // [ personalisation du message de validation
+            // 'title.required' => 'Y a pas de titre ahahhah!',
+            // 'title.max' => 'Trop long'
+        // ]);
 
         //sauvegarde d'un nouvel article
 
-        $article = new Article;
-        $article->user_id = auth()->id();
-        $article->category_id = request('category', null);
-        $article->title = request('title');
-        $article->slug = Str::slug($article->title);
-        $article->content = request('content');
-        $article->save();
+        // $article = Article::create([
+            // 'user_id'=>auth()->id(),
+            // 'title'=>request('title'),
+            // 'slug'=>Str::slug(request('title')),
+            // 'content'=>request('content'),
+            // 'category_id'=>request('category', null ),
+        // ]);
+        
+        
+        // $article = new Article;
+        // $article->user_id = auth()->id();
+        // $article->category_id = request('category', null);
+        // $article->title = request('title');
+        // $article->slug = Str::slug($article->title);
+        // $article->content = request('content');
+        // $article->save();
 
         $success = 'Article ajouté.';
 
