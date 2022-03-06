@@ -9,6 +9,7 @@ use App\Models\{
     Article,
     Category,
 };
+use App\Http\Requests\ArticleRequest;
 
 
 
@@ -73,34 +74,39 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
-        $article = Auth::user()->articles()->create(request()->validate([
-            'title'=>['required', 'max:20', 'unique:articles,title'],
-            'content'=>['required'],
-            'category'=>['sometimes', 'nullable', 'exists:categories,id'],
-        ]));
 
-        $article->category_id = request('category', null);
-        $article->save();
+        $validatedData = $request->validated();
+        $validatedData['category_id'] = request('category', null);
+
+        Auth::user()->articles()->create($validatedData);
+        // $article = Auth::user()->articles()->create(request()->validate([
+            // 'title' => ['required', 'max:20', 'unique:articles,title'],
+            // 'content' => ['required'],
+            // 'category' => ['sometimes', 'nullable', 'exists:categories,id'],
+        // ]));
+
+        // $article->category_id = request('category', null);
+        // $article->save();
 
 
         // [ personalisation du message de validation
-            // 'title.required' => 'Y a pas de titre ahahhah!',
-            // 'title.max' => 'Trop long'
+        // 'title.required' => 'Y a pas de titre ahahhah!',
+        // 'title.max' => 'Trop long'
         // ]);
 
         //sauvegarde d'un nouvel article
 
         // $article = Article::create([
-            // 'user_id'=>auth()->id(),
-            // 'title'=>request('title'),
-            // 'slug'=>Str::slug(request('title')),
-            // 'content'=>request('content'),
-            // 'category_id'=>request('category', null ),
+        // 'user_id'=>auth()->id(),
+        // 'title'=>request('title'),
+        // 'slug'=>Str::slug(request('title')),
+        // 'content'=>request('content'),
+        // 'category_id'=>request('category', null ),
         // ]);
-        
-        
+
+
         // $article = new Article;
         // $article->user_id = auth()->id();
         // $article->category_id = request('category', null);
