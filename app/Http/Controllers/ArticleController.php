@@ -75,16 +75,25 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //sauvegarde d'un nouvel article
-        
-        $article = new Article;
+        request()->validate([
+            'title'=>['required', 'max:20', 'unique:articles,title'],
+            'content'=>['required'],
+            'category'=>['sometimes', 'nullable', 'exists:categories,id'],
+        ]);
 
+        //sauvegarde d'un nouvel article
+
+        $article = new Article;
         $article->user_id = auth()->id();
         $article->category_id = request('category', null);
-        $article->title =request('title');
-        $article->content =request('content');
+        $article->title = request('title');
+        $article->slug = Str::slug($article->title);
+        $article->content = request('content');
         $article->save();
 
+        $success = 'Article ajouté.';
+
+        return back()->withSuccess($success);
     }
 
     /**
