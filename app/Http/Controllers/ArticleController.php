@@ -60,7 +60,7 @@ class ArticleController extends Controller
         $categories = Category::get();
 
         $data = [
-            'title' => $description = 'Ajouter un nouveau post',
+            'title' => $description = 'Ajouter une publication',
             'description' => $description,
             'categories' => $categories,
         ];
@@ -79,6 +79,10 @@ class ArticleController extends Controller
             'title'=>['required', 'max:20', 'unique:articles,title'],
             'content'=>['required'],
             'category'=>['sometimes', 'nullable', 'exists:categories,id'],
+        ],
+        [
+            'title.required' => 'Y a pas de titre ahahhah!',
+            'title.max' => 'Trop long'
         ]);
 
         //sauvegarde d'un nouvel article
