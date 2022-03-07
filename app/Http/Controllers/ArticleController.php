@@ -82,9 +82,9 @@ class ArticleController extends Controller
 
         Auth::user()->articles()->create($validatedData);
         // $article = Auth::user()->articles()->create(request()->validate([
-            // 'title' => ['required', 'max:20', 'unique:articles,title'],
-            // 'content' => ['required'],
-            // 'category' => ['sometimes', 'nullable', 'exists:categories,id'],
+        // 'title' => ['required', 'max:20', 'unique:articles,title'],
+        // 'content' => ['required'],
+        // 'category' => ['sometimes', 'nullable', 'exists:categories,id'],
         // ]));
 
         // $article->category_id = request('category', null);
@@ -142,9 +142,19 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Article $article)
     {
         //user authentifié, editer/modifier son article via un formulaire
+        abort_if(auth()->id() != $article->user_id, 403);
+
+        $data = [
+            'title' => $description = 'Mise à jour de ' . $article->title,
+            'description' => $description,
+            'article' => $article,
+            'categories' => Category::get(),
+        ];
+
+        return view('article.edit', $data);
     }
 
     /**

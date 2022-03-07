@@ -29,4 +29,20 @@ class ArticleRequest extends FormRequest
             'category' => ['sometimes', 'nullable', 'exists:categories,id'],
         ];
     }
+
+
+    // public function messages()
+    // {
+        // return [
+            // 'title.required' => 'Et le titre ?',
+            // 'content.required' => 'Oublie pas le contenu',
+        // ];
+    // }
+
+    public function attributes()
+    {
+        return [
+            'title' => 'super titre',
+        ];
+    }
 }
