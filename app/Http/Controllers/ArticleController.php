@@ -22,6 +22,10 @@ class ArticleController extends Controller
     }
 
     protected $perPage = 12;
+
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -51,6 +55,11 @@ class ArticleController extends Controller
         // }
     }
 
+
+
+
+    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -65,8 +74,14 @@ class ArticleController extends Controller
             'description' => $description,
             'categories' => $categories,
         ];
+
         return view('article.create', $data);
     }
+
+
+
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -81,6 +96,12 @@ class ArticleController extends Controller
         $validatedData['category_id'] = request('category', null);
 
         Auth::user()->articles()->create($validatedData);
+
+        $success = 'Article ajouté.';
+
+        return back()->withSuccess($success); 
+    }
+
         // $article = Auth::user()->articles()->create(request()->validate([
         // 'title' => ['required', 'max:20', 'unique:articles,title'],
         // 'content' => ['required'],
@@ -115,10 +136,15 @@ class ArticleController extends Controller
         // $article->content = request('content');
         // $article->save();
 
-        $success = 'Article ajouté.';
+       
 
-        return back()->withSuccess($success);
-    }
+       
+    
+
+
+
+
+
 
     /**
      * Display the specified resource.
@@ -133,8 +159,14 @@ class ArticleController extends Controller
             'description' => $article->title . '. ' . Str::words($article->content, 10),
             'article' => $article,
         ];
+
         return view('article.show', $data);
     }
+
+
+
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -157,6 +189,10 @@ class ArticleController extends Controller
         return view('article.edit', $data);
     }
 
+
+
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -164,10 +200,22 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ArticleRequest $request, Article $article)
     {
+        //validation des données
+        $validatedData = $request->validated();
+        $validatedData['category_id'] = request('category', null);
+    
         // mise à jour de l'article en database
+        Auth::user()->articles()->updateOrCreate(['id' => $article->id], $validatedData);
+
+        $success = 'Publication modifiée';
+
+        return redirect()->route('articles.edit', ['article' => $article->slug])->withSuccess($success);
     }
+
+
+
 
     /**
      * Remove the specified resource from storage.

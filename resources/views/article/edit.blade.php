@@ -56,8 +56,8 @@
                             <label for="category">Catégorie</label>
                             <select name="category" class="form-control">
                                 <option value=""></option>
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}" @if(old('category', $article->category_id ??) == $category->id) selected @endif>{{ $category->name }}</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}" @if(old('category', $article->category_id ?? null) == $category->id) selected @endif>{{ $category->name }}</option>
                                 @endforeach
                             </select>
                             @error('category')
