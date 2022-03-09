@@ -21,13 +21,18 @@
                         {{--pour ne pas interpreter par ex: ce qui vient du user( évite script malicieux) = {{ '<script>alert("ok")</script> <p>Laravel trop cool !</p>' }} --}}
                         <p class="card-text">{{ Str::words($article->content, 5) }}</p>
 
-                        <span class="auhtor">Par<a href="{{ route('user.profile', ['user' => $article->user->id]) }}">{{ $article->user->name }}</a>
+                        <span class="auhtor">Par <a href="{{ route('user.profile', ['user' => $article->user->id]) }}">{{ $article->user->name }}</a>
                             inscrit le {{ $article->user->created_at->format('d/m/y') }}</span> <br>
                         <span class="time">posté {{ $article->created_at->diffForHumans() }}</span> {{-- isoFormat('LLL') --}}
                         
                         @if(Auth::check() && Auth::user()->id == $article->user_id)
                         <div class="author mt-4">
-                            <a class="btn btn-info" href="{{  route('articles.edit', ['article' => $article->slug]) }}">Modifier</a>
+                            <a class="btn btn-info" href="{{  route('articles.edit', ['article' => $article->slug]) }}">Modifier</a> &nbsp;
+                            <form style="display:inline" class="mt-4"action="{{ route('articles.destroy', ['article' => $article->slug]) }}" methode="post">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Supprimer</button>
+                            </form>
                         </div>
                         @endif
                     </div>

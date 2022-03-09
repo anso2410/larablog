@@ -207,7 +207,7 @@ class ArticleController extends Controller
         $validatedData['category_id'] = request('category', null);
     
         // mise à jour de l'article en database
-        Auth::user()->articles()->updateOrCreate(['id' => $article->id], $validatedData);
+        $article = Auth::user()->articles()->updateOrCreate(['id' => $article->id], $validatedData);
 
         $success = 'Publication modifiée';
 
