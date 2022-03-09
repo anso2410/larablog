@@ -202,6 +202,7 @@ class ArticleController extends Controller
      */
     public function update(ArticleRequest $request, Article $article)
     {
+        abort_if(auth()->id() != $article->user_id, 403);
         //validation des données
         $validatedData = $request->validated();
         $validatedData['category_id'] = request('category', null);
@@ -223,8 +224,16 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Article $article)
     {
+        abort_if(auth()->id() != $article->user_id, 403);
+        
         // user peut supprimé l'article récuperer en base de données via l'identifiant passée dans l'URL
+        $article->delete();
+
+        $success = 'Publication supprimée.';
+
+        return back()->withSuccess($success);
+        
     }
 }
