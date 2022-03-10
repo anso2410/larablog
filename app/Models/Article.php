@@ -12,8 +12,9 @@ class Article extends Model
 
     use HasFactory;
 
-    //protected $fillable = ['title', 'user_id', 'slug', 'content', 'category_id'];
+    // ou protected $fillable = ['title', 'user_id', 'slug', 'content', 'category_id'];
     protected $guarded = ['user_id', 'slug'];
+
 
     public function setTitleAttribute($value)
     {
@@ -22,15 +23,26 @@ class Article extends Model
     
     }
 
+
     public function getRouteKeyName()
     {
         return 'slug';
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+
+
+
     public function user()
     {
         return $this->belongsTo(User::class); // un article appartient à un utilisateur
     }
+
+
 
     public function category()
     {
