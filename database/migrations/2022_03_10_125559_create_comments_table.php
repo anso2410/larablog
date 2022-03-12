@@ -11,11 +11,13 @@ class CreateCommentsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up() // creation table comments dans la db+ champs.
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('article_id')->constrained()->onDelete('cascade'); 
+            $table->foreignId('article_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->longText('content');
             $table->timestamps();
         });
     }
@@ -25,7 +27,7 @@ class CreateCommentsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down() // 
     {
         Schema::dropIfExists('comments');
     }
