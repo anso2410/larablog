@@ -42,7 +42,7 @@
                     {{-- <small class="text-muted">Jean le 25 Janvier à 19h02</small> --}}
                     {{-- <hr> --}}
                     @auth
-                        <form action="" method="post">
+                        <form action="{{ route('post.comment', ['article'=>$article->slug]) }}" method="post">
 
                             @csrf
 
