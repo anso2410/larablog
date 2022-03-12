@@ -9,6 +9,8 @@ class Comment extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['user_id', 'article_id', 'content'];
+
     // un commentaire appartient à un article
     public function article()
     {
