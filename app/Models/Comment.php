@@ -15,7 +15,8 @@ class Comment extends Model
         return $this->belongsTo(Article::class);
     }
 
-
+    public function comments() // un commentaire appartient à un utilisateur
+    {
+        return $this->belongsTo(User::class);
+    }
 }
-
-
