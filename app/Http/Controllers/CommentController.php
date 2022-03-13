@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\CommentRequest as RequestsCommentRequest;
 
-use App\Models\{
-    Comment,
-    Article
+use App\Models\{Comment,Article
 };
 //use App\Htpp\Requests\CommentRequest;
 
@@ -25,6 +23,10 @@ class CommentController extends Controller
         $validatedData['user_id'] = auth()->id();
 
         $article->comments()->create($validatedData);
+
+        $success = 'Commentaire ajouté.';
+
+        return back()->withSuccess($success);
 
     }
 }

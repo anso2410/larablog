@@ -7,7 +7,14 @@
             @include('includes.sidebar')
         </div>
         <!-- /.col-lg-3 -->
+
         <div class="col-lg-9">
+
+            @if (session('success'))
+                <div class="alert alert-success mt-3 text-center">
+                    {{ session('success') }}
+                </div>
+            @endif
 
             {{-- début du post --}}
 
@@ -42,13 +49,14 @@
                     {{-- <small class="text-muted">Jean le 25 Janvier à 19h02</small> --}}
                     {{-- <hr> --}}
                     @auth
-                        <form action="{{ route('post.comment', ['article'=>$article->slug]) }}" method="post">
+                        <form action="{{ route('post.comment', ['article' => $article->slug]) }}" method="post">
 
                             @csrf
 
                             <div class="form-group">
                                 <label for="content">Laisser un commentaire</label>
-                                <textarea class="form-control" name="content" cols="30" rows="5" placeholder="votre commentaire...">{{ old('content') }}</textarea>
+                                <textarea class="form-control" name="content" cols="30" rows="5"
+                                    placeholder="votre commentaire...">{{ old('content') }}</textarea>
 
                                 @error('content')
                                     <div class="error">
