@@ -24,7 +24,7 @@ class CommentController extends Controller
 
         $article->comments()->create($validatedData);
 
-        $success = 'Commentaire ajouté.';
+        $success = 'Commentaire ajouté avec succès.';
 
         return back()->withSuccess($success);
 

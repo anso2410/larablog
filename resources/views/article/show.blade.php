@@ -10,6 +10,8 @@
 
         <div class="col-lg-9">
 
+            {{-- message de succes --}}
+
             @if (session('success'))
                 <div class="alert alert-success mt-3 text-center">
                     {{ session('success') }}
@@ -43,11 +45,16 @@
                     Commentaires
                 </div>
                 <div class="card-body">
-                    {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, --}}
-                    {{-- similique necessitatibus neque non! Doloribus, modi sapiente --}}
-                    {{-- laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p> --}}
-                    {{-- <small class="text-muted">Jean le 25 Janvier à 19h02</small> --}}
-                    {{-- <hr> --}}
+
+                    @forelse($comments as $comment)
+                        <p>{{ $comment->content }}</p>
+                        <small class="text-muted"><a href="{{ route('user.profile', ['user'=>$comment->user->id]) }}">{{ $comment->user->name }}</a> le
+                            {{ $comment->created_at->isoFormat('LLL') }} </small>
+                        <hr>
+                    @empty
+                        <p>Pas de commentaire pour l'instant.</p>
+                    @endforelse
+
                     @auth
                         <form action="{{ route('post.comment', ['article' => $article->slug]) }}" method="post">
 
