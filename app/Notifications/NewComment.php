@@ -45,9 +45,12 @@ class NewComment extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject('Nouveau commentaire')
+                    ->greeting('Bonjour '.$this->comment->article->user->name)
+                    ->line($this->comment->user->name.' Vous a laissé un nouveau commentaire.')
+                    ->line('Intitulé de l\'article : '.$this->comment->article->title)
+                    ->action('Voir le commentaire', route('articles.show', ['article'=>$this->comment->article->slug]))
+                    ->salutation('A bientôt sur '.config('app.name'));
     }
 
     /**
