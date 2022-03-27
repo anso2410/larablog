@@ -34,9 +34,12 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
     protected function gate()
     {
         Gate::define('viewHorizon', function ($user) {
-            return true;
+            if(config('app.env') !== 'production'){
+                return true;
+            }
+            
             return in_array($user->email, [
-                //
+                //admin@admin.com par ex.
             ]);
         });
     }
