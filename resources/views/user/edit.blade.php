@@ -39,6 +39,17 @@
                             @enderror
                         </div>
 
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" class="form-control" value="{{ old('email', $user->email) }}">
+                            {{-- affichage message d'erreur --}}
+                            @error('email')
+                                <div class="error">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
                         <button type="submit" class="btn btn-primary">Envoyer</button>
                     </form>
 
