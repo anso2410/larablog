@@ -43,6 +43,12 @@ class User extends Authenticatable
     ];
 
 
+    public function avatar()
+    {
+        $this->hasOne(Avatar::class);
+    }
+
+
     public function articles()
     {
         return $this->hasMany(Article::class); //un utilisateur peut avoir plusieurs articles.
