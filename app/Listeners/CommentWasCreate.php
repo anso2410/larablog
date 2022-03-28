@@ -9,7 +9,7 @@ use App\Events\CommentWasCreate as CommentEvent;
 use App\Notifications\NewComment;
 
 
-class CommentWasCreate
+class CommentWasCreate implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -32,5 +32,10 @@ class CommentWasCreate
         //envoi la notification à l'auteur d'un article
         $when = now()->addSeconds(10);
         $event->comment->article->user->notify((new NewComment($event->comment))->delay($when));
+    }
+
+    public function failed(CommentEvent $event, $exception)
+    {
+        dd($event, $exception);
     }
 }
