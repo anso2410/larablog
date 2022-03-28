@@ -49,9 +49,16 @@
                                 </div>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label for="avatar"> Mon avatar</label>
+                            <br>
+                            <input class="mt-2"type="file" name="avatar">
+                        </div>
 
                         <button type="submit" class="btn btn-primary">Envoyer</button>
                     </form>
+
+                    <p class="mt-3"><a href="">Modifier mon mot de passe</a></p>
 
                 </div>
             </div>
