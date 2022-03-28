@@ -8,6 +8,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use App\Events\CommentWasCreate as CommentEvent;
 use App\Notifications\NewComment;
 
+
 class CommentWasCreate
 {
     /**

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CommentRequest as RequestsCommentRequest;
-use App\Notifications\NewComment;
+use App\Events\CommentWasCreate;
 
 
 use App\Models\{
@@ -30,8 +30,7 @@ class CommentController extends Controller
 
         if (auth()->id() !== $article->user_id) // si le commentateur n'est l'auteur de l'article
         {   
-            
-            
+            event(new CommentWasCreate($comment));
         }
 
         $success = 'Commentaire ajouté avec succès.';
