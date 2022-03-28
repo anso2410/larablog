@@ -62,6 +62,9 @@ Route::resource('articles', ArticleController::class )->except('index');
 // });
 
 
+Route::get('phpmyinfo', function () {
+    phpinfo(); 
+})->name('phpmyinfo');
 
 
 

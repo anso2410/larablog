@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\User;
 
-use Storage, Image;
+;
 
 class UserController extends Controller
 {
@@ -48,7 +50,19 @@ class UserController extends Controller
             $filename = Str::slug($user->name).'-'.$user->id.'.'.$ext;
             
             $path = request()->file('avatar')->storeAs('avatars/'.$user->id, $filename);
-            dd($path);
-        }
+
+             $thumbnailImage = Image::make(request()->file('avatar'))->fit(200, 200, function($constraint)
+             {
+                $constraint->upsize();
+                
+             })->encode($ext, 50);
+
+             $thumbnailPath = 'avatars/'.$user->id.'/thumbnail/'.$filename;
+
+             Storage::put($thumbnailPath, $thumbnailImage);
+            
+            
+        }   
+
     }
 }
