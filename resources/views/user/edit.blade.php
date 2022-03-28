@@ -30,7 +30,7 @@
 
                         <div class="form-group">
                             <label for="name">Nom d'utilisateur</label>
-                            <input type="text" name="title" class="form-control" value="{{ old('name', $user->name) }}">
+                            <input type="text" name="name" class="form-control" value="{{ old('name', $user->name) }}">
                             {{-- affichage message d'erreur --}}
                             @error('name')
                                 <div class="error">
@@ -53,6 +53,11 @@
                             <label for="avatar"> Mon avatar</label>
                             <br>
                             <input class="mt-2"type="file" name="avatar">
+                            @error('avatar')
+                            <div class="error">
+                                {{ $message }}
+                            </div>
+                        @enderror
                         </div>
 
                         <button type="submit" class="btn btn-primary">Envoyer</button>

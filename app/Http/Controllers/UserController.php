@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
 use Illuminate\Validation\Rule;
+
+use App\Models\User;
+
+use Storage, Image;
 
 class UserController extends Controller
 {
@@ -33,9 +36,15 @@ class UserController extends Controller
     {   
         $user = auth()->user();
         request()->validate([
-            'name' => ['requred', 'min:3', 'max:20', Rule::unique('users')->ignore($user)],
+            'name' => ['required', 'min:3', 'max:20', Rule::unique('users')->ignore($user)],
             'email' => ['required', 'email', Rule::unique('users')->ignore($user)],
-            'avatar' => ['sometimes', 'nullable', 'image', 'file', 'mimes:jpg,jpeg,png'],
+            'avatar' => ['sometimes', 'nullable', 'image', 'file', 'mimes:jpeg,png'],
         ]);
+
+        if(request()->hasFile('avatar') && request()->file('avatar')->isValid())
+        {
+            $path = request()->file('avatar')->store('avatars/'.$user->id);
+            dd($path);
+        }
     }
 }
