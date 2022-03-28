@@ -39,6 +39,9 @@
 
           @auth
           <li class="nav-item">
+            <a class="nav-link" href="{{ route('user.edit') }}">Mon compte</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{{ route('articles.create') }}">Ajoutez une publication</a>
           </li>
           <li class="nav-item">

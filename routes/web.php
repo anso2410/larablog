@@ -27,7 +27,7 @@ Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
 Route::get('forgot', [ForgotController::class, 'index'])->name('forgot');
 Route::get('reset/{token}', [ResetController::class, 'index'])->name('reset');
-Route::get('user/edit', [UserController::class, 'edit'])->name('edit.user');
+Route::get('user/edit', [UserController::class, 'edit'])->name('user.edit');
 
 Route::get('profile/{user}', [UserController::class, 'profile'])->name('user.profile');
 
