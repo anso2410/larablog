@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 use App\Models\User;
 
@@ -42,7 +43,10 @@ class UserController extends Controller
         ]);
 
         if(request()->hasFile('avatar') && request()->file('avatar')->isValid())
-        {
+        {   
+            $ext = request()->file('avatar')->extension();
+            $filename = Str::slug($user->name).'.'.$ext;
+            dd($filename);
             $path = request()->file('avatar')->store('avatars/'.$user->id);
             dd($path);
         }
