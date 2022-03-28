@@ -29,5 +29,7 @@ class CommentWasCreate
     public function handle(CommentEvent $event)
     {
         //envoi la notification à l'auteur d'un article
+        $when = now()->addSeconds(10);
+        $event->comment->article->user->notify((new NewComment($event->comment))->delay($when));
     }
 }
