@@ -16,14 +16,16 @@ class CommentWasCreate
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public Comment $comment;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Comment $comment)
     {
-        //
+        $this->comment = $comment;
     }
 
     /**
