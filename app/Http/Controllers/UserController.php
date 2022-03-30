@@ -47,6 +47,12 @@ class UserController extends Controller
 
 
         if (request()->hasFile('avatar') && request()->file('avatar')->isValid()) {
+
+            if(Storage::exists('avatars/'.$user->id))
+            {
+                Storage::deleteDirectory('avatars/'.$user->id);
+            }
+            
             $ext = request()->file('avatar')->extension();
             $filename = Str::slug($user->name) . '-' . $user->id . '.' . $ext;
 
