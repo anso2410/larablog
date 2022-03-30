@@ -23,6 +23,28 @@ class UserController extends Controller
         return 'Je suis un utilisateur et mon nom est ' . $user->name;
     }
 
+
+
+    public function password() // formulaire de changement de mot de passe
+    {
+        $data = [
+            'title' => $description = 'modifier mon mot de passe',
+            'description' => $description,
+            'user' => auth()->user(),
+        ];
+        return view('user.password', $data);
+    }
+
+
+
+    public function updatePassword() //mise à jour du mot de passe
+    {
+
+    } 
+
+
+
+
     public function edit()
     {
         $user = auth()->user();
@@ -33,6 +55,9 @@ class UserController extends Controller
         ];
         return view('user.edit', $data);
     }
+
+
+
 
     public function store() //sauvegarde des infos user
     {
