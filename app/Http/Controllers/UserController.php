@@ -39,6 +39,15 @@ class UserController extends Controller
 
     public function updatePassword() //mise à jour du mot de passe
     {
+        request()->validate([
+            'current' => 'required|password',
+            'password' => 'required|between:9,20|confirmed',     
+        ]);
+        
+        $user->password = bcrypt(request('password'));
+
+        $succes = 'Mot de passe mise à jour';
+        return back()->withSuccess($succes);
 
     } 
 
