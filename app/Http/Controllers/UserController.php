@@ -20,7 +20,12 @@ class UserController extends Controller
 
     public function profile(User $user)
     {
-        return 'Je suis un utilisateur et mon nom est ' . $user->name;
+        $data = [
+            'title' => 'Profil de '.$user->name,
+            'description' => $user->name.' est inscrit depuis le : '.$user->created_at->isoFormat('LL').' et a posté '.$user->articles()->count().' article(s)',
+        ];
+        
+        dd($data);
     }
 
 
