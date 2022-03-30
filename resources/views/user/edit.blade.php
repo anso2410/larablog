@@ -41,7 +41,8 @@
 
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" name="email" class="form-control" value="{{ old('email', $user->email) }}">
+                            <input type="email" name="email" class="form-control"
+                                value="{{ old('email', $user->email) }}">
                             {{-- affichage message d'erreur --}}
                             @error('email')
                                 <div class="error">
@@ -52,13 +53,21 @@
                         <div class="form-group">
                             <label for="avatar"> Mon avatar</label>
                             <br>
-                            <input class="mt-2"type="file" name="avatar">
+                            <input class="mt-2" type="file" name="avatar">
                             @error('avatar')
-                            <div class="error">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                                <div class="error">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
+
+                        @if (!empty($user->avatar->filename))
+                            <div class="mb-4">
+                                <a href="{{ $user->avatar->url }}" target="blank">
+                                    <img src="{{ $user->avatar->thumb_url }}" width="200" height="200" alt="">
+                                </a>
+                            </div>
+                        @endif
 
                         <button type="submit" class="btn btn-primary">Envoyer</button>
                     </form>
