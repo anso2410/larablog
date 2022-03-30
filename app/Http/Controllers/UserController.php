@@ -48,6 +48,8 @@ class UserController extends Controller
         
         $user->password = bcrypt(request('password'));
 
+        $user->save();
+
         $succes = 'Mot de passe mise à jour';
         return back()->withSuccess($succes);
 
