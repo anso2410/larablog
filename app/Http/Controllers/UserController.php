@@ -36,13 +36,15 @@ class UserController extends Controller
     public function store()
     {
         $user = auth()->user();
-       $user = $user->updateOrCreate(['id'=>$user->id],
-        request()->validate([
-            'name' => ['required', 'min:3', 'max:20', Rule::unique('users')->ignore($user)],
-            'email' => ['required', 'email', Rule::unique('users')->ignore($user)],
-            'avatar' => ['sometimes', 'nullable', 'image', 'file', 'mimes:jpeg,png', 'dimensions:min_width=200,min_height=200'],
-        ]));
-        
+        $user = $user->updateOrCreate(
+            ['id' => $user->id],
+            request()->validate([
+                'name' => ['required', 'min:3', 'max:20', Rule::unique('users')->ignore($user)],
+                'email' => ['required', 'email', Rule::unique('users')->ignore($user)],
+                'avatar' => ['sometimes', 'nullable', 'image', 'file', 'mimes:jpeg,png', 'dimensions:min_width=200,min_height=200'],
+            ])
+        );
+
 
         if (request()->hasFile('avatar') && request()->file('avatar')->isValid()) {
             $ext = request()->file('avatar')->extension();
@@ -58,6 +60,20 @@ class UserController extends Controller
             $thumbnailPath = 'avatars/' . $user->id . '/thumbnail/' . $filename;
 
             Storage::put($thumbnailPath, $thumbnailImage);
+
+            $user->avatar()->updateOrCreate(
+                ['user_id' => $user->id],
+                [
+                    'filename' => $filename,
+                    'url' => Storage::url($path),
+                    'path' => $path,
+                    'thumb_url' => Storage::url($thumbnailPath),
+                    'thumb_path' => $thumbnailPath,
+                ]
+            );
         }
+
+        $success = 'Informations mises à jour.';
+        return back()->withSuccess($success);
     }
 }
