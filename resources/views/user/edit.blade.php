@@ -72,7 +72,7 @@
                         <button type="submit" class="btn btn-primary">Envoyer</button>
                     </form>
 
-                    <p class="mt-3"><a href="">Modifier mon mot de passe</a></p>
+                    <p class="mt-3"><a href="{{ route('user.password') }}">Modifier mon mot de passe</a></p>
 
                 </div>
             </div>
