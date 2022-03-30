@@ -34,13 +34,14 @@ Route::get('profile/{user}', [UserController::class, 'profile'])->name('user.pro
 Route::get('/', [ArticleController::class, 'index'] );
 
 
-
+Route::post('password', [UserController::class, 'updatePassword'])->name('update.password');
 Route::post('register', [RegisterController::class, 'register'])->name('post.register');
 Route::post('login', [LoginController::class, 'login'])->name('post.login');
 Route::post('forgot', [ForgotController::class, 'store'])->name('post.forgot');
 Route::post('reset', [ResetController::class, 'reset'])->name('post.reset');
 Route::post('comment/{article}', [CommentController::class, 'store'])->name('post.comment');
 Route::post('user/store', [UserController::class, 'store'])->name('post.user');
+
 
 Route::resource('articles', ArticleController::class )->except('index');
 
