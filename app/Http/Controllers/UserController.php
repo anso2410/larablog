@@ -43,6 +43,8 @@ class UserController extends Controller
             'current' => 'required|password',
             'password' => 'required|between:9,20|confirmed',     
         ]);
+
+        $user = auth()->user();
         
         $user->password = bcrypt(request('password'));
 
