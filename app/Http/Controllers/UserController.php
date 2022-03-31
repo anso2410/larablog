@@ -134,6 +134,6 @@ class UserController extends Controller
 
     public function destroy(User $user) // suppression compte utilisateur et son image de profil
     {
-
+        return 'suppression du user'
     }
 }
