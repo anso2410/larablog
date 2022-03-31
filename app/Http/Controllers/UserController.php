@@ -20,7 +20,7 @@ class UserController extends Controller
 
     public function profile(User $user)
     {
-        $articles = $user->articles()->withCount('comments')->orderByDesc('comments_count')->paginate(2);
+        $articles = $user->articles()->withCount('comments')->orderByDesc('comments_count')->paginate(4);
        
         $data = [
             'title' => 'Profil de ' . $user->name,
