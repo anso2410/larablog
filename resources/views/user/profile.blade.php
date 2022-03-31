@@ -9,8 +9,10 @@
         <!-- /.col-lg-3 -->
         <div class="col-lg-9">
 
+            <h1>Profil de {{$user->name  }}</h1>
+
             {{-- début du post --}}
-            
+
             @foreach ($articles as $article)
                 <div class="card mt-4">
 
