@@ -19,12 +19,15 @@ class UserController extends Controller
     }
 
     public function profile(User $user)
-    {
+    {   
+        $aricles = $user->articles()->orderBy('created_at', 'desc')->get();
+
         $data = [
-            'title' => 'Profil de '.$user->name,
-            'description' => $user->name.' est inscrit depuis le : '.$user->created_at->isoFormat('LL').' et a posté '.$user->articles()->count().' article(s)',
+            'title' => 'Profil de ' . $user->name,
+            'description' => $user->name . ' est inscrit depuis le : ' . $user->created_at->isoFormat('LL') . ' et a posté ' . $user->articles()->count() . ' article(s)',
+            'user' => $user,
         ];
-        
+
         dd($data);
     }
 
@@ -46,19 +49,18 @@ class UserController extends Controller
     {
         request()->validate([
             'current' => 'required|password',
-            'password' => 'required|between:9,20|confirmed',     
+            'password' => 'required|between:9,20|confirmed',
         ]);
 
         $user = auth()->user();
-        
+
         $user->password = bcrypt(request('password'));
 
         $user->save();
 
         $succes = 'Mot de passe mise à jour';
         return back()->withSuccess($succes);
-
-    } 
+    }
 
 
 
@@ -83,8 +85,7 @@ class UserController extends Controller
 
         DB::beginTransaction();
 
-        try 
-        {
+        try {
             $user = $user->updateOrCreate(
                 ['id' => $user->id],
                 request()->validate([
@@ -94,11 +95,10 @@ class UserController extends Controller
                 ])
             );
             if (request()->hasFile('avatar') && request()->file('avatar')->isValid()) {
-                if(Storage::exists('avatars/'.$user->id))
-                {
-                    Storage::deleteDirectory('avatars/'.$user->id);
+                if (Storage::exists('avatars/' . $user->id)) {
+                    Storage::deleteDirectory('avatars/' . $user->id);
                 }
-                
+
                 $ext = request()->file('avatar')->extension();
                 $filename = Str::slug($user->name) . '-' . $user->id . '.' . $ext;
                 $path = request()->file('avatar')->storeAs('avatars/' . $user->id, $filename);
@@ -118,9 +118,7 @@ class UserController extends Controller
                     ]
                 );
             }
-        }
-        catch(ValidationException $e)
-        {
+        } catch (ValidationException $e) {
             DB::rollBack();
             dd($e->getErrors());
         }
