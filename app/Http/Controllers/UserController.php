@@ -130,4 +130,10 @@ class UserController extends Controller
         $success = 'Informations mises à jour.';
         return back()->withSuccess($success);
     }
+
+
+    function destroy(User $user) // suppression compte utilisateur et son image de profil
+    {
+
+    }
 }
