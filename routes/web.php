@@ -8,7 +8,8 @@ use App\Http\Controllers\{
     LogoutController,
     ForgotController,
     ResetController,
-    CommentController
+    CommentController,
+    CategoryController
 };
 
 /*
@@ -30,6 +31,7 @@ Route::get('reset/{token}', [ResetController::class, 'index'])->name('reset');
 Route::get('user/edit', [UserController::class, 'edit'])->name('user.edit');
 Route::get('user/password', [UserController::class, 'password'])->name('user.password');
 Route::get('profile/{user}', [UserController::class, 'profile'])->name('user.profile');
+Route::get('category/{category}', [CategoryController::class, 'show'])->name('category.show');
 
 Route::get('/', [ArticleController::class, 'index'] );
 
