@@ -21,7 +21,7 @@ class UserController extends Controller
     public function profile(User $user)
     {
         $articles = $user->articles()->withCount('comments')->latest()->paginate(2);
-        
+       
         $data = [
             'title' => 'Profil de ' . $user->name,
             'description' => $user->name . ' est inscrit depuis le : ' . $user->created_at->isoFormat('LL') . ' et a posté ' . $user->articles()->count() . ' article(s)',

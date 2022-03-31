@@ -37,7 +37,7 @@
                         <span class="time">posté {{ $article->created_at->diffForHumans() }}</span>
                         {{-- isoFormat('LLL') --}}
 
-                        <div class="text-right">x Commentaire(s)</div>
+                        <div class="text-right">{{ $article->comments_count }} Commentaire(s)</div>
 
                         @if (Auth::check() && Auth::user()->id == $article->user_id)
                             <div class="author mt-4">
