@@ -20,7 +20,7 @@ class UserController extends Controller
 
     public function profile(User $user)
     {
-        $articles = $user->articles()->latest()->paginate(2);
+        $articles = $user->articles()->withCount('comments')->latest()->paginate(2);
         
         $data = [
             'title' => 'Profil de ' . $user->name,

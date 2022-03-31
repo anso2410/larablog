@@ -19,7 +19,7 @@
 
             {{-- début du post --}}
 
-            @foreach ($articles as $article)
+            @forelse ($articles as $article)
                 <div class="card mt-4">
 
                     <div class="card-body">
@@ -37,6 +37,8 @@
                         <span class="time">posté {{ $article->created_at->diffForHumans() }}</span>
                         {{-- isoFormat('LLL') --}}
 
+                        <div class="text-right">x Commentaire(s)</div>
+
                         @if (Auth::check() && Auth::user()->id == $article->user_id)
                             <div class="author mt-4">
                                 <a class="btn btn-info"
@@ -52,7 +54,13 @@
                         @endif
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <p>Aucun article</p>
+                    </div>
+                </div>
+            @endforelse
 
             {{-- fin du post --}}
 
