@@ -136,6 +136,9 @@ class UserController extends Controller
     {   
 
         abort_if($user->id !== auth()->id(), 403);
-        return 'suppression de '.$user->name;
+        
+        Storage::deleteDirectory('avatars/' .$user->id);
+
+        $user->delete();
     }
 }
