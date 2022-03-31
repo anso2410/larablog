@@ -45,6 +45,8 @@ Route::post('user/store', [UserController::class, 'store'])->name('post.user');
 
 Route::resource('articles', ArticleController::class )->except('index');
 
+Route::delete('destroy/{user}', [UserController::class, 'destroy'])->name('user.destroy');
+
 // Route::get('structures', function(){
     // $fruits = ['pommes', 'oranges', 'mandarines', 'citrons'];
     // $data = [
