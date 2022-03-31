@@ -9,6 +9,7 @@ class CategoryController extends Controller
 {
     public function show(Category $category) //les articles de la catégorie
     {
-        dd($category);
+        $articles = $category->articles()->latest()->paginate(5);
+        dd($articles);
     }
 }
