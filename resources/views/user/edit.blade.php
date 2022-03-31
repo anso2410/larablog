@@ -74,6 +74,14 @@
 
                     <p class="mt-3"><a href="{{ route('user.password') }}">Modifier mon mot de passe</a></p>
 
+                    <div class="text-right">
+                        <form action="{{ route('user.destroy', ['user'=>$user->id]) }}" method="post">
+                           @method('DELETE') 
+                           @csrf
+                           <button type="submit" class="alert alert-danger">Supprimer mon compte</button>                           
+                        </form>
+                    </div>
+
                 </div>
             </div>
             <!-- /.card -->
