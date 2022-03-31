@@ -9,12 +9,6 @@
         <!-- /.col-lg-3 -->
         <div class="col-lg-9">
 
-            @if (session('success'))
-                <div class="alert alert-success mt-3 text-center">
-                    {{ session('success') }}
-                </div>
-            @endif
-
             {{-- début du post --}}
             
             @foreach ($articles as $article)

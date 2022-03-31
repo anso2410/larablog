@@ -29,7 +29,7 @@ class UserController extends Controller
             'articles' => $articles,
         ];
 
-        return view('user.profil', $data);
+        return view('user.profile', $data);
         
     }
 
