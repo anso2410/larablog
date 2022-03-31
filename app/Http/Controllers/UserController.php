@@ -140,5 +140,7 @@ class UserController extends Controller
         Storage::deleteDirectory('avatars/' .$user->id);
 
         $user->delete();
+        $success = 'Utilisateur supprimé';
+        return redirect('/')->withSuccess($success);
     }
 }
