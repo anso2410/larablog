@@ -19,9 +19,9 @@ class UserController extends Controller
     }
 
     public function profile(User $user)
-    {   
-        $aricles = $user->articles()->orderBy('created_at', 'desc')->get();
-
+    {
+        $articles = $user->articles()->latest()->get();
+        dd($articles);
         $data = [
             'title' => 'Profil de ' . $user->name,
             'description' => $user->name . ' est inscrit depuis le : ' . $user->created_at->isoFormat('LL') . ' et a posté ' . $user->articles()->count() . ' article(s)',
