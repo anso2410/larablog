@@ -2,6 +2,6 @@
 <div class="list-group">
 
 @foreach(App\Models\Category::has('articles')->get() as $category)
-<a href="#" class="list-group-item">{{ $category->name }}</a>
+<a href="{{ route('category.show', ['category'=>slug]) }}" class="list-group-item">{{ $category->name }}</a>
 @endforeach
 </div>
