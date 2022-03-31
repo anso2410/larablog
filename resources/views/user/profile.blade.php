@@ -9,7 +9,7 @@
         <!-- /.col-lg-3 -->
         <div class="col-lg-9">
 
-            <h1>Profil de {{$user->name  }}</h1>
+            <h2 class="text-muted mt-3">Profil de {{$user->name  }}</h2>
 
             {{-- début du post --}}
 
