@@ -11,6 +11,12 @@
 
             <h2 class="text-muted mt-3">Profil de {{$user->name  }}</h2>
 
+            @if($user->avatar)
+            <a href="{{ $user->avatar->url }}" target="blank">
+                <img src="{{ $user->avatar->thumb_url }}" width="200" height="200" alt="image de {{ $user->name }}">
+            </a>
+            @endif
+
             {{-- début du post --}}
 
             @foreach ($articles as $article)
